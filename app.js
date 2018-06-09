@@ -1,31 +1,32 @@
 const button = document.querySelector('button');
 const content = document.getElementById('content');
 
-button.addEventListener('click', toggleDisclosureWithClick);
-button.addEventListener('keydown', toggleDisclosureWithKeydown);
+button.addEventListener('mousedown', toggleDisclosureWithClick);
+button.addEventListener('keyup', toggleDisclosureWithKeydown);
 
 
 function toggleDisclosureWithClick(e) {
   e.preventDefault();
 
-  if (e.mozInputSource === 6) return; // to prevent to fire space key the click event.
+  if (e.which === 1) {
 
-  if (content.getAttribute('aria-hidden') === 'true') {
+    if (content.getAttribute('aria-hidden') === 'true') {
 
-    content.setAttribute('aria-hidden', 'false');
-    content.classList.remove('hidden');
+      content.setAttribute('aria-hidden', 'false');
+      content.classList.remove('hidden');
 
-    button.setAttribute('aria-expanded', 'true');
-    button.classList.add('expanded');
+      button.setAttribute('aria-expanded', 'true');
+      button.classList.add('expanded');
 
-  } else {
+    } else {
 
-    content.setAttribute('aria-hidden', 'true');
-    content.classList.add('hidden');
+      content.setAttribute('aria-hidden', 'true');
+      content.classList.add('hidden');
 
-    button.setAttribute('aria-expanded', 'false');
-    button.classList.remove('expanded');
+      button.setAttribute('aria-expanded', 'false');
+      button.classList.remove('expanded');
 
+    }
   }
 
 }
