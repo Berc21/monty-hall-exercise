@@ -8,6 +8,8 @@ button.addEventListener('keydown', toggleDisclosureWithKeydown);
 function toggleDisclosureWithClick(e) {
   e.preventDefault();
 
+  if (e.mozInputSource === 6) return; // to prevent to fire space key the click event.
+
   if (content.getAttribute('aria-hidden') === 'true') {
 
     content.setAttribute('aria-hidden', 'false');
@@ -31,10 +33,12 @@ function toggleDisclosureWithClick(e) {
 
 function toggleDisclosureWithKeydown(e) {
 
-  let key = e.key || e.keyCode
+  let key = e.keyCode;
 
   // If the key pressed was Space or Enter
   if (key === 13 || key === 32) {
+
+    console.log("Hey it works");
 
     e.preventDefault();
 
